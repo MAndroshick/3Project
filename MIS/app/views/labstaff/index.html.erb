@@ -1,0 +1,28 @@
+<h1>labstaff#index</h1>
+<p>Find me in app/views/labstaff/index.html.erb</p>
+<table rules = "all">
+    <thead>
+		<th>ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+    </thead>
+    <tbody>
+<% @labstaffs.each do |labstaff| %>
+    <tr>
+		<td><%= labstaff.name_first[0] + labstaff.name_last[0] + labstaff.id.to_s %></td>
+        <td><%= labstaff.name_first %></td>
+        <td><%= labstaff.name_last%></td>
+        <% if @valid == true %>
+        <td><%= link_to "Delete", {:controller => "labstaff", :action => "delete", :id => labstaff.id} %></td>
+        <td><%= link_to "Edit", {:controller => "labstaff", :action => "edit", :id => labstaff.id} %></td>
+        <% end %>
+    </tr>
+<% end %>
+    </tbody>
+</table>
+<br>
+<% if @valid == true %>
+<a href="/labstaff/register">Add Lab Staff</a>
+<% end %>
+<br><br>
+<a href= "<%= @main_route %>">Main Menu</a>
